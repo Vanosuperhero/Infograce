@@ -3,6 +3,8 @@
     <string name="nav1">Слои</string>
     <string name="nav2">Подложки</string>
     <string name="nav3">Миссии</string>
+    <string name="nav_open">Открыть</string>
+    <string name="nav_close">Закрыть</string>
     <string name="titleGroup">Общие слои</string>
     <string name="transparency">Прозрачность:</string>
     <string name="elements">Эл-ов:</string>
@@ -20,4 +22,6 @@
     <string name="table">table</string>
     <string name="rectangle">rectangle</string>
 
+    <string name="mapbox_access_token">pk.eyJ1IjoiYXptZXRvdiIsImEiOiJjbDNmdjN0c3AwOHl1M2R0NW03d2MxYTA5In0.pc3Uq0typG33XTRCp1U-VQ</string>
+    <string name="fab_descr_change_map_style">Изменить стиль карты</string>
 </resources>

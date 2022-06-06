@@ -50,8 +50,8 @@
         <entry key="app/src/main/res/drawable/waypoint.xml" value="0.2015" />
         <entry key="app/src/main/res/drawable/zoom_to_fit_icon.xml" value="0.2015" />
         <entry key="app/src/main/res/font/font.xml" value="0.22395833333333334" />
-        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/layer_group.xml" value="0.6811955168119551" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layer_group.xml" value="0.6137820512820513" />
         <entry key="app/src/main/res/layout/layers_group.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.42704626334519574" />

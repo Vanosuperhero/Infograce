@@ -1,215 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal"
+    tools:context=".MainActivity"
+    tools:openDrawer="end">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/tabLayoutParent"
-        android:background="@color/dark_blue"
-        >
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabMode="scrollable"
-            app:tabContentStart="16dp"
             android:background="@color/dark_blue"
-            app:tabTextColor="@color/white60"
-            app:tabSelectedTextColor="@color/white"
-            app:tabIndicatorColor="@android:color/white"
-            app:tabIndicatorFullWidth="false"
-            app:tabTextAppearance="@style/MyCustomTextAppearance">
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/white" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="56dp"
-                android:text="@string/nav1" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="56dp"
-                android:text="@string/nav2" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="56dp"
-                android:text="@string/nav3" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-        <View
-            android:id="@+id/line"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white30"
-            app:layout_constraintTop_toBottomOf="@id/tabLayout"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="match_parent">
+
+            <com.mapbox.maps.MapView xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                mapbox:mapbox_cameraTargetLat="55.7558"
+                mapbox:mapbox_cameraTargetLng="37.6173"
+                mapbox:mapbox_cameraZoom="14.0" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_change_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:alpha="0.7"
+                android:backgroundTint="@color/dark_blue"
+                android:contentDescription="@string/fab_descr_change_map_style" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginLeft="-64dp"
+        android:background="@color/dark_blue"
+        android:paddingTop="24dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/expandableSearch"
-            android:background="@color/dark_blue"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line"
-            android:visibility="gone">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextField"
-                style="@style/LoginTextInputLayoutStyle"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tabLayoutParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:endIconDrawable="@drawable/search2"
-                app:endIconMode="custom"
-                app:endIconTint="@color/white"
+                android:background="@color/dark_blue"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editSearch"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="20dp"
-                    android:textColor="@color/white" />
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/dark_blue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabContentStart="16dp"
+                    app:tabIndicatorColor="@android:color/white"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/MyCustomTextAppearance"
+                    app:tabTextColor="@color/white60">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:text="@string/nav1" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:text="@string/nav2" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:text="@string/nav3" />
+                </com.google.android.material.tabs.TabLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/dark_blue"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayoutParent">
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white30"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/expandableSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_blue"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/outlinedTextField"
+                        style="@style/LoginTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:endIconDrawable="@drawable/search2"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.recyclerview.widget.RecyclerView>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginBottom="20dp"
+                            android:textColor="@color/white" />
 
+                    </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="bottom"
-        android:background="@color/dark_blue_exp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/imageDrag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="14dp"
-            android:layout_marginEnd="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/commonSwitchParent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/button_background_color"
-            app:tint="@color/button_text_color"
-            app:srcCompat="@drawable/drag_list_item"
-            android:contentDescription="@string/commonDrag" />
-
-        <ImageView
-            android:id="@+id/imageDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:padding="12dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageSearch"
-            app:layout_constraintStart_toEndOf="@+id/imageSearch"
-            app:layout_constraintTop_toTopOf="@+id/imageSearch"
-            android:background="@color/button_background_color"
-            app:srcCompat="@drawable/delete"
-            android:contentDescription="@string/deleteLayer"/>
-
-        <ImageView
-            android:id="@+id/imageSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:padding="12dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageAdd"
-            app:layout_constraintStart_toEndOf="@+id/imageAdd"
-            app:layout_constraintTop_toTopOf="@+id/imageAdd"
-            android:background="@color/button_background_color"
-            app:srcCompat="@drawable/search"
-            android:contentDescription="@string/search"/>
-
-        <ImageView
-            android:id="@+id/imageAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:padding="12dp"
-            android:background="@color/button_background_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/add"
-            android:contentDescription="@string/addLayer"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/dark_blue"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayoutParent">
 
 
-        <FrameLayout
-            android:id="@+id/commonSwitchParent"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingEnd="13dp"
-            android:paddingStart="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-            <com.rm.rmswitch.RMTristateSwitch
-                android:id="@+id/commonSwitch"
-                android:duplicateParentState="true"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom"
+                android:background="@color/dark_blue_exp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_gravity="center"
-                app:forceAspectRatio="false"
-                app:state="left"
-                app:enabled="true"
-                app:switchDesign="android"
-                app:switchBkgLeftColor="@color/white38"
-                app:switchBkgMiddleColor="@color/white38"
-                app:switchBkgRightColor="@color/green50"
-                app:switchToggleLeftColor="@color/white_thumb"
-                app:switchToggleMiddleColor="@color/white60"
-                app:switchToggleRightColor="@color/green" />
-        </FrameLayout>
+                app:layout_constraintStart_toStartOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/imageDrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:background="@color/button_background_color"
+                    android:contentDescription="@string/commonDrag"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/commonSwitchParent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/drag_list_item"
+                    app:tint="@color/button_text_color" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/imageDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:background="@color/button_background_color"
+                    android:contentDescription="@string/deleteLayer"
+                    android:padding="12dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageSearch"
+                    app:layout_constraintStart_toEndOf="@+id/imageSearch"
+                    app:layout_constraintTop_toTopOf="@+id/imageSearch"
+                    app:srcCompat="@drawable/delete" />
+
+                <ImageView
+                    android:id="@+id/imageSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:background="@color/button_background_color"
+                    android:contentDescription="@string/search"
+                    android:padding="12dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageAdd"
+                    app:layout_constraintStart_toEndOf="@+id/imageAdd"
+                    app:layout_constraintTop_toTopOf="@+id/imageAdd"
+                    app:srcCompat="@drawable/search" />
+
+                <ImageView
+                    android:id="@+id/imageAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/button_background_color"
+                    android:contentDescription="@string/addLayer"
+                    android:padding="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/add" />
+
+
+                <FrameLayout
+                    android:id="@+id/commonSwitchParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="13dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.rm.rmswitch.RMTristateSwitch
+                        android:id="@+id/commonSwitch"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:duplicateParentState="true"
+                        app:enabled="true"
+                        app:forceAspectRatio="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:state="left"
+                        app:switchBkgLeftColor="@color/white38"
+                        app:switchBkgMiddleColor="@color/white38"
+                        app:switchBkgRightColor="@color/green50"
+                        app:switchDesign="android"
+                        app:switchToggleLeftColor="@color/white_thumb"
+                        app:switchToggleMiddleColor="@color/white60"
+                        app:switchToggleRightColor="@color/green" />
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>
